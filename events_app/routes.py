@@ -54,7 +54,8 @@ def create():
 def event_detail(event_id):
     """Show a single event."""
     event = Event.query.get(event_id)
-    return render_template('event_detail.html', event=event)
+    event_time = str(event.date_and_time).split(' ')
+    return render_template('event_detail.html', event=event, event_time=event_time)
 
 
 @main.route('/event/<event_id>', methods=['POST'])
